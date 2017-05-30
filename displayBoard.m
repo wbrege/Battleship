@@ -1,0 +1,2 @@
+function displayBoard(shipBoard, guessBoard)
+
