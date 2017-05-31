@@ -13,7 +13,7 @@ height = size(shipBoard,1);
 %Prepare the meshgrid
 [x,y] = meshgrid(1:width,1:height);
 
-figure;
+figure('units', 'centimeters', 'position', [0 20 (numSheets*10) 10]);
 %Lets start printing!
 for ii = 1:numSheets
     %Prepare indexes for this sheet
@@ -30,13 +30,17 @@ for ii = 1:numSheets
     
     %Make it look a little prettier
     axis([1 (width+1) 0 height]);
+    ax = gca;
+    ax.XTick = 1:width;
+    ax.YTick = 1:height;
+    suptitle('Ship Board');
     grid on;
     set(gca,'XTickLabel','');
     set(gca,'YTickLabel','');
 end
 
 %Next we'll prepare the guessBoard
-figure;
+figure('units', 'centimeters', 'position', [0 5 (numSheets*10) 10]);
 for ii = 1:numSheets
     %Prepare indexes for this sheet
     hitIndex = (guessBoard(:,:,ii) == 2);
@@ -50,6 +54,10 @@ for ii = 1:numSheets
     
     %Make it look a little prettier
     axis([1 (width+1) 0 height]);
+    ax = gca;
+    ax.XTick = 1:width;
+    ax.YTick = 1:height;
+    suptitle('Guess Board');
     grid on;
     set(gca,'XTickLabel','');
     set(gca,'YTickLabel','');
